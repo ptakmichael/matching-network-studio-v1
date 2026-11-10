@@ -1,6 +1,6 @@
 # Matching Network Studio, web edition
 
-Single-file application. Open `dist/MN_Studio.html` in Chrome, Edge or Firefox.
+Single-file application. Open `app/dist/MN_Studio.html` in Chrome, Edge or Firefox.
 No installation, MATLAB licence, server or network connection is required.
 
 ## Workflows
@@ -30,7 +30,7 @@ Each point of the chart is a load Z_L, coloured by the best transducer efficienc
 any ladder can reach for it, by η_loss or η_match at its optimal termination, or by
 the structure of the optimal network. Hovering a load draws the arrow to its
 optimal termination Z_opt; clicking pins it. The map is the closed-form Z_opt
-(`src/engine/zopt.js`, see `../ZOPT_CLOSED_FORM.md`) at every pixel, computed by a
+(`app/src/engine/zopt.js`, see `app/ZOPT_CLOSED_FORM.md`) at every pixel, computed by a
 pool of workers and recomputed for the view after each zoom.
 
 ## Chart controls
@@ -58,12 +58,13 @@ Further numeric columns, such as pitch, roll and gap, are available as marker co
 ## Structure
 
 ```
-src/engine/   Numerical engine, ported from the mn_*.m files. No interface code.
-src/ui/       Interface. plot.js fixes every text size. Smith charts are drawn on
-              canvas by smith.js, which alone owns the view; other charts use Plotly.
-src/worker.js Computation runs in Web Workers, so the interface does not block.
-test/         Engine checks against MATLAB outputs, and browser checks.
-dist/         The deliverable.
+app/src/engine/         Numerical engine, ported from the mn_*.m files. No interface code.
+app/src/ui/             Interface. plot.js fixes every text size. Smith charts are drawn on
+                        canvas by smith.js, which alone owns the view; other charts use Plotly.
+app/src/worker.js       Computation runs in Web Workers, so the interface does not block.
+app/test/               Engine checks against MATLAB outputs, and browser checks.
+app/dist/               The deliverable.
+app/ZOPT_CLOSED_FORM.md Derivation of the closed-form Z_opt.
 ```
 
 | MATLAB | Web engine |
@@ -81,6 +82,8 @@ dist/         The deliverable.
 
 ## Build and test
 
+Run these commands from the `app` folder.
+
 ```
 npm install
 npm run build             # writes dist/MN_Studio.html
@@ -92,8 +95,8 @@ node test/ltspice.mjs     # .cir and .asc through LTspice; Windows LTspice from 
 node test/browsers.mjs    # Edge, Chrome and Firefox on Windows, from WSL
 ```
 
-`test/golden.json` is written by `test/matlab_crosscheck.m`. Run that script again
-in MATLAB after any change to the mn_*.m files.
+`app/test/golden.json` holds reference values written by the MATLAB toolbox, which is
+not part of this repository.
 
 ## Differences from mn_netlist_text
 

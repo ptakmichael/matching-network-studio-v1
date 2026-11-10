@@ -6,7 +6,7 @@
 
 with a 41 x 41 grid and Nelder-Mead. `eta_loss` is already closed form (`mn_exact`).
 This note derives the maximiser itself, for any lossy L/C ladder of any length, and
-replaces the search. Implementation: `app/src/engine/zopt.js`.
+replaces the search. Implementation: `src/engine/zopt.js`.
 
 ## Notation
 
@@ -98,4 +98,4 @@ takes 0.3 to 3 s.
   has shown it.
 - Case 4 needs one scalar root, which has no explicit formula.
 - No MATLAB port yet. `mn_exact_opt` remains the MATLAB path; the web engine test
-  `app/test/engine.test.mjs` checks the closed form against the search.
+  `test/engine.test.mjs` checks the closed form against the search.
