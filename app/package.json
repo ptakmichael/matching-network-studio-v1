@@ -1,0 +1,16 @@
+{
+  "name": "mn-studio-web",
+  "version": "2.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Matching Network Studio: single-file offline GUI",
+  "scripts": {
+    "build": "node build.mjs",
+    "test": "node --test test/engine.test.mjs"
+  },
+  "devDependencies": {
+    "esbuild": "^0.28.2",
+    "playwright-core": "^1.65.0",
+    "plotly.js-cartesian-dist-min": "^4.2.0"
+  }
+}
